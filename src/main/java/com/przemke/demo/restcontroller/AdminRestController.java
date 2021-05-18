@@ -21,16 +21,6 @@ public class AdminRestController {
         this.orderService = orderService;
     }
 
-    @GetMapping("/products")
-    public List<Product> getProducts() {
-        return productService.getProducts();
-    }
-
-    @GetMapping("/products/{productId}")
-    public Product getProduct(@PathVariable int productId) {
-        return productService.getProduct(productId);
-    }
-
     @PostMapping("/products")
     public Product addProduct(@RequestBody Product product) {
         product.setId(0);
@@ -41,14 +31,7 @@ public class AdminRestController {
     @PutMapping("/products/{productId}")
     public Product updateProduct(@PathVariable int productId, @RequestBody Product product) {
         product.setId(productId);
-        productService.saveProduct(product);
-        return product;
-    }
-
-    @DeleteMapping(value = "/products/{productId}", produces = "application/json; charset=UTF-8")
-    public String deleteProduct(@PathVariable int productId) {
-        productService.deleteProduct(productId);
-        return "Deleted product with id=" + productId;
+        return productService.saveProduct(product);
     }
 
     @PatchMapping("/orders/recalculate/{orderId}")
