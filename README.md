@@ -6,17 +6,21 @@ mvn spring-boot:run
 Available REST endpoints:
 
 POST /admin/products - add product to the database and returns it
+
 Example JSON format for create product
+
 {
-  "name" : "name"
+  "name" : "name",
   "price" : 33.11
 }
 
 PUT /admin/products/{id} - update product with given id (or adding a new product when id is not given) 
                            and returns product. Changes do not affect the price of already approved orders
+
 Example JSON format for update product
+
 {
-  "name" : "changed_name"
+  "name" : "changed_name",
   "price" : 33.11
 }
 
